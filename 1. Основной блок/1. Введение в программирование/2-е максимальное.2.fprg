@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-01 06:36:46 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDQtMDE7IjAzOjM1OjMzICI7NjUyNw=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDQtMDE7IjA2OjM2OjQ2ICI7NTs2NjQ3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#1053;&#1072;&#1081;&#1090;&#1080; 2-&#1077; &#1084;&#1072;&#1082;&#1089;&#1080;&#1084;&#1072;&#1083;&#1100;&#1085;&#1086;&#1077; &#1095;&#1080;&#1089;&#1083;&#1086;"/>
+            <declare name="i, n, max1, max2" type="Integer" array="False" size=""/>
+            <assign variable="n" expression="50"/>
+            <declare name="ar" type="Integer" array="True" size="n"/>
+            <for variable="i" start="0" end="n - 1" direction="inc" step="1">
+                <assign variable="ar[i]" expression="random(1000)"/>
+            </for>
+            <assign variable="max1" expression="ar[0]"/>
+            <assign variable="max2" expression="ar[0]"/>
+            <for variable="i" start="1" end="n - 1" direction="inc" step="1">
+                <if expression="ar[i] &gt; max1">
+                    <then>
+                        <assign variable="max2" expression="max1"/>
+                        <assign variable="max1" expression="ar[i]"/>
+                    </then>
+                    <else>
+                        <if expression="ar[i] &gt; max2">
+                            <then>
+                                <assign variable="max2" expression="ar[i]"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+            </for>
+            <output expression="max2" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

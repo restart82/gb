@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-30 08:48:17 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMzA7IjA4OjQxOjQ2ICI7NjUzNA=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMzA7IjA4OjQ4OjE3ICI7MTs2NjQ3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="array" type="Integer" array="True" size="50"/>
+            <declare name="i, sum" type="Integer" array="False" size=""/>
+            <assign variable="sum" expression="0"/>
+            <for variable="i" start="0" end="50 - 1" direction="inc" step="1">
+                <assign variable="array[i]" expression="random(10)"/>
+                <if expression="(i)mod(2) = 1">
+                    <then>
+                        <assign variable="sum" expression="sum + array[i]"/>
+                    </then>
+                    <else/>
+                </if>
+            </for>
+            <output expression="sum" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

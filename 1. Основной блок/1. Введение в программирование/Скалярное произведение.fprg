@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-28 08:43:05 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMjg7IjA4OjM2OjM1ICI7NjU0Mw=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMjg7IjA4OjQzOjA1ICI7MTs2NjQ2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="n, i, sum" type="Integer" array="False" size=""/>
+            <assign variable="n" expression="5"/>
+            <declare name="A, B" type="Integer" array="True" size="n"/>
+            <assign variable="sum" expression="0"/>
+            <for variable="i" start="0" end="n - 1" direction="inc" step="1">
+                <assign variable="A[i]" expression="random(10)"/>
+                <assign variable="B[i]" expression="random(10)"/>
+                <assign variable="sum" expression="sum + (A[i]*B[i])"/>
+            </for>
+            <output expression="sum" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

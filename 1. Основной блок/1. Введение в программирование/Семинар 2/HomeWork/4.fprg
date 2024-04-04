@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-31 06:25:00 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMzE7IjA2OjE3OjM2ICI7NjUzNQ=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMzE7IjA2OjI1OjAwICI7Mjs2NjM0"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="&#1053;&#1072;&#1081;&#1090;&#1080; &#1089;&#1088;&#1077;&#1076;&#1085;&#1077;&#1077; &#1072;&#1088;&#1080;&#1092;&#1084;&#1077;&#1090;&#1080;&#1095;&#1077;&#1089;&#1082;&#1086;&#1077; &#1089;&#1088;&#1077;&#1076;&#1080; &#1074;&#1089;&#1077;&#1093; &#1101;&#1083;&#1077;&#1084;&#1077;&#1085;&#1090;&#1086;&#1074; &#1084;&#1072;&#1089;&#1089;&#1080;&#1074;&#1072;"/>
+            <declare name="i, n, sum" type="Integer" array="False" size=""/>
+            <declare name="mid" type="Real" array="False" size=""/>
+            <assign variable="n" expression="12"/>
+            <declare name="array" type="Integer" array="True" size="n"/>
+            <assign variable="sum" expression="0"/>
+            <for variable="i" start="0" end="n - 1" direction="inc" step="1">
+                <assign variable="array[i]" expression="random(10)"/>
+                <assign variable="sum" expression="sum + array[i]"/>
+            </for>
+            <assign variable="mid" expression="sum/n"/>
+            <output expression="mid" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-04 07:37:07 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDQtMDQ7IjA2OjU0OjMzICI7NjUzNA=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDQtMDQ7IjA3OjM3OjA3ICI7MTs2NjQ1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="numbers" type="Integer" array="True" size="8"/>
+            <declare name="i, max, count" type="Integer" array="False" size=""/>
+            <for variable="i" start="0" end="7" direction="inc" step="1">
+                <input variable="numbers[i]"/>
+            </for>
+            <assign variable="max" expression="numbers[0]"/>
+            <assign variable="count" expression="0"/>
+            <assign variable="i" expression="0"/>
+            <while expression="i &lt; 8">
+                <if expression="numbers[i] &gt; max">
+                    <then>
+                        <assign variable="max" expression="numbers[i]"/>
+                        <assign variable="count" expression="1"/>
+                    </then>
+                    <else>
+                        <if expression="numbers[i] == max">
+                            <then>
+                                <assign variable="count" expression="count + 1"/>
+                            </then>
+                            <else/>
+                        </if>
+                    </else>
+                </if>
+                <assign variable="i" expression="i + 1"/>
+            </while>
+            <output expression="count" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

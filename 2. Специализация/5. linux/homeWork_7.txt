@@ -1,0 +1,118 @@
+1. Переустановить операционную систему (по желанию, для дополнительной практики)
+2. Установить Docker.
+
+vboxuser@MyUbuntu:~$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2023-12-09 10:52:37 MSK; 1h 7min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 3917 (dockerd)
+      Tasks: 18
+     Memory: 66.0M
+        CPU: 2min 13.506s
+     CGroup: /system.slice/docker.service
+             └─3917 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+3. Запустить контейнер с Ubuntu.
+
+vboxuser@MyUbuntu:~$ docker search ubuntu
+NAME                             DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+ubuntu                           Ubuntu is a Debian-based Linux operating sys…   16663     [OK]
+websphere-liberty                WebSphere Liberty multi-architecture images …   297       [OK]
+open-liberty                     Open Liberty multi-architecture images based…   62        [OK]
+neurodebian                      NeuroDebian provides neuroscience research s…   105       [OK]
+ubuntu-debootstrap               DEPRECATED; use "ubuntu" instead                52        [OK]
+ubuntu-upstart                   DEPRECATED, as is Upstart (find other proces…   115       [OK]
+ubuntu/nginx                     Nginx, a high-performance reverse proxy & we…   103
+ubuntu/squid                     Squid is a caching proxy for the Web. Long-t…   73
+ubuntu/cortex                    Cortex provides storage for Prometheus. Long…   4
+ubuntu/apache2                   Apache, a secure & extensible open-source HT…   67
+ubuntu/prometheus                Prometheus is a systems and service monitori…   53
+ubuntu/kafka                     Apache Kafka, a distributed event streaming …   37
+ubuntu/bind9                     BIND 9 is a very flexible, full-featured DNS…   65
+ubuntu/mysql                     MySQL open source fast, stable, multi-thread…   55
+ubuntu/zookeeper                 ZooKeeper maintains configuration informatio…   12
+ubuntu/postgres                  PostgreSQL is an open source object-relation…   32
+ubuntu/redis                     Redis, an open source key-value store. Long-…   21
+ubuntu/jre                       Distroless Java runtime based on Ubuntu. Lon…   9
+ubuntu/dotnet-aspnet             Chiselled Ubuntu runtime image for ASP.NET a…   13
+ubuntu/grafana                   Grafana, a feature rich metrics dashboard & …   9
+ubuntu/memcached                 Memcached, in-memory keyvalue store for smal…   5
+ubuntu/dotnet-deps               Chiselled Ubuntu for self-contained .NET & A…   11
+ubuntu/prometheus-alertmanager   Alertmanager handles client alerts from Prom…   9
+ubuntu/dotnet-runtime            Chiselled Ubuntu runtime image for .NET apps…   13
+ubuntu/cassandra                 Cassandra, an open source NoSQL distributed …   2
+vboxuser@MyUbuntu:~$ docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+5e8117c0bd28: Pull complete
+Digest: sha256:8eab65df33a6de2844c9aefd19efe8ddb87b7df5e9185a4ab73af936225685bb
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+vboxuser@MyUbuntu:~$ docker images
+REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
+ubuntu       latest    b6548eacb063   8 days ago   77.8MB
+vboxuser@MyUbuntu:~$ docker run -it ubuntu
+root@82eb2b64ff9b:/# whoami
+root
+root@82eb2b64ff9b:/# exit
+exit
+vboxuser@MyUbuntu:~$ docker ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS                     PORTS     NAMES
+82eb2b64ff9b   ubuntu         "/bin/bash"   3 minutes ago   Exited (0) 2 minutes ago             angry_northcutt
+
+4. * Используя Dockerfile, собрать связку nginx + PHP-FPM в одном контейнере.
+
+vboxuser@MyUbuntu:~/docker-homework$ nano Dockerfile
+vboxuser@MyUbuntu:~/docker-homework$ cat Dockerfile
+FROM debian
+MAINTAINER petr
+RUN apt-get update
+RUN apt-get install nginx -y
+RUN apt-get install php -y
+RUN apt-get install php-fpm -y
+VOLUME "/var/www/html"
+EXPOSE 80
+CMD /usr/sbin/nginx -g "daemon off;"
+
+vboxuser@MyUbuntu:~/docker-homework$ docker build -t nginx_php_image .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  2.048kB
+Step 1/9 : FROM debian
+latest: Pulling from library/debian
+90e5e7d8b87a: Pull complete
+Digest: sha256:133a1f2aa9e55d1c93d0ae1aaa7b94fb141265d0ee3ea677175cdb96f5f990e5
+Status: Downloaded newer image for debian:latest
+ ---> 0ce03c8a15ec
+Step 2/9 : MAINTAINER petr
+ ---> Running in c4acda2a2411
+Removing intermediate container c4acda2a2411
+ ---> 978e26bb5db3
+Step 3/9 : RUN apt-get update
+.
+.
+.
+
+vboxuser@MyUbuntu:~/docker-homework$ docker images
+REPOSITORY        TAG       IMAGE ID       CREATED          SIZE
+nginx_php_image   latest    19a83c6bee66   58 seconds ago   328MB
+debian            latest    0ce03c8a15ec   2 weeks ago      117MB
+
+vboxuser@MyUbuntu:~/docker-homework$ docker run -dp 8080:80 nginx_php_image
+3b79007447f04f7526084c2ef8fc7603c2cfebac35d1d6453355927ba406ed4d
+vboxuser@MyUbuntu:~/docker-homework$ docker ps
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS                                   NAMES
+3b79007447f0   nginx_php_image   "/bin/sh -c '/usr/sb…"   12 seconds ago   Up 12 seconds   0.0.0.0:8080->80/tcp, :::8080->80/tcp   trusting_mahavira
+
+
+
+
+
+
+
+
+

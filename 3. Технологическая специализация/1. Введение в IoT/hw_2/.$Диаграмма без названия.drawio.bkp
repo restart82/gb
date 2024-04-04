@@ -1,0 +1,123 @@
+<mxfile host="Electron" modified="2024-03-08T10:58:02.579Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.1.5 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="y-yk7rQW4iBqrI0buN5d" version="23.1.5" type="device">
+  <diagram name="Page-1" id="55a83fd1-7818-8e21-69c5-c3457e3827bb">
+    <mxGraphModel dx="573" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-2" target="v2mrgRsfFMyAzsgP_XJQ-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-6" value="SPI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-5">
+          <mxGeometry x="-0.2535" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-2" value="Датчик температуры" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;startArrow=classic;startFill=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-3" target="v2mrgRsfFMyAzsgP_XJQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-38" value="MQTT" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-30">
+          <mxGeometry x="-0.8452" y="1" relative="1" as="geometry">
+            <mxPoint x="4" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-3" value="Плата МК" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="320" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-9" target="v2mrgRsfFMyAzsgP_XJQ-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-8" value="SPI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-7">
+          <mxGeometry x="-0.2535" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-9" value="Датчик температуры" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="400" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;startArrow=classic;startFill=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-10" target="v2mrgRsfFMyAzsgP_XJQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-10" value="Плата МК" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="400" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-13" target="v2mrgRsfFMyAzsgP_XJQ-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-12" value="SPI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-11">
+          <mxGeometry x="-0.2535" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-13" value="Датчик влажности" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="480" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;startArrow=classic;startFill=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-14" target="v2mrgRsfFMyAzsgP_XJQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-14" value="Плата МК" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="480" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-17" target="v2mrgRsfFMyAzsgP_XJQ-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-16" value="SPI" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-15">
+          <mxGeometry x="-0.2535" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-17" value="Датчик влажности" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="560" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;dashPattern=8 8;startArrow=classic;startFill=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-18" target="v2mrgRsfFMyAzsgP_XJQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-18" value="Плата МК" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="560" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-21" target="v2mrgRsfFMyAzsgP_XJQ-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-20" value="UART" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-19">
+          <mxGeometry x="-0.2535" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-21" value="Датчик CO2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;startArrow=classic;startFill=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-22" target="v2mrgRsfFMyAzsgP_XJQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-22" value="Плата МК" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="640" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-25" target="v2mrgRsfFMyAzsgP_XJQ-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-24" value="UART" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="v2mrgRsfFMyAzsgP_XJQ-23">
+          <mxGeometry x="-0.2535" relative="1" as="geometry">
+            <mxPoint x="8" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-25" value="Датчик частиц" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#b1ddf0;strokeColor=#10739e;" vertex="1" parent="1">
+          <mxGeometry x="880" y="720" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-37" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;startArrow=classic;startFill=1;" edge="1" parent="1" source="v2mrgRsfFMyAzsgP_XJQ-26" target="v2mrgRsfFMyAzsgP_XJQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-26" value="Плата МК" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fad7ac;strokeColor=#b46504;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="720" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-27" value="WI-FI роутер" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d0cee2;strokeColor=#56517e;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="500" width="120" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="v2mrgRsfFMyAzsgP_XJQ-39" value="" style="image;html=1;labelBackgroundColor=#ffffff;image=img/lib/clip_art/networking/Wireless_Router_128x128.png;rounded=1;shadow=0;comic=0;strokeWidth=2;fontSize=22" vertex="1" parent="1">
+          <mxGeometry x="1310" y="565" width="60" height="75" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

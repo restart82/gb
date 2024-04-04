@@ -1,0 +1,136 @@
+/*--1--*/
+vboxuser@MyUbuntu:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  shared  snap  Templates  Videos
+vboxuser@MyUbuntu:~$ mkdir students mentors
+vboxuser@MyUbuntu:~$ ls
+Desktop    Downloads  Music     Public  snap      Templates
+Documents  mentors    Pictures  shared  students  Videos
+vboxuser@MyUbuntu:~$ touch students/students_list.txt
+vboxuser@MyUbuntu:~$ touch mentors/mentors_list.txt
+vboxuser@MyUbuntu:~$ tree
+.
+├── Desktop
+├── Documents
+├── Downloads
+├── mentors
+│   └── mentors_list.txt
+├── Music
+├── Pictures
+├── Public
+├── shared
+│   └── sus
+├── snap
+│   ├── firefox
+│   │   ├── 2987
+│   │   ├── 3358
+│   │   ├── common
+│   │   └── current -> 2987
+│   ├── snapd-desktop-integration
+│   │   ├── 83
+│   │   ├── common
+│   │   └── current -> 83
+│   └── snap-store
+│       ├── 959
+│       ├── common
+│       └── current -> 959
+├── students
+│   └── students_list.txt
+├── Templates
+└── Videos
+
+26 directories, 2 files
+
+/*--2--*/
+vboxuser@MyUbuntu:~$ nano students/students_list.txt
+vboxuser@MyUbuntu:~$ cat students/students_list.txt
+Олег Азарных
+Дмитрий Борзенок
+Константин Гусев
+Аскаров Даурен
+vboxuser@MyUbuntu:~$ vim mentors/mentors_list.txt
+vboxuser@MyUbuntu:~$ cat mentors/mentors_list.txt
+Кирилл Иванов
+
+/*--3--*/
+vboxuser@MyUbuntu:~$ mv mentors/mentors_list.txt students/
+vboxuser@MyUbuntu:~$ tree
+.
+├── Desktop
+├── Documents
+├── Downloads
+├── mentors
+├── Music
+├── Pictures
+├── Public
+├── shared
+│   └── sus
+├── snap
+│   ├── firefox
+│   │   ├── 2987
+│   │   ├── 3358
+│   │   ├── common
+│   │   └── current -> 2987
+│   ├── snapd-desktop-integration
+│   │   ├── 83
+│   │   ├── common
+│   │   └── current -> 83
+│   └── snap-store
+│       ├── 959
+│       ├── common
+│       └── current -> 959
+├── students
+│   ├── mentors_list.txt
+│   └── students_list.txt
+├── Templates
+└── Videos
+
+26 directories, 2 files
+
+/*--4--*/
+vboxuser@MyUbuntu:~$ rm mentors/ -rf
+vboxuser@MyUbuntu:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  shared  snap  students  Templates  Videos
+
+/*--5--*/
+vboxuser@MyUbuntu:~$ mv students/ students_and_mentors/
+vboxuser@MyUbuntu:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  shared  snap  students_and_mentors  Templates  Videos
+
+/*--6--*/
+vboxuser@MyUbuntu:~$ rm students_and_mentors/ -rf
+vboxuser@MyUbuntu:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  shared  snap  Templates  Videos
+
+/*--7--*/
+vboxuser@MyUbuntu:~$ mkdir files/
+vboxuser@MyUbuntu:~$ cd files
+vboxuser@MyUbuntu:~/files$ cat > file1
+qwerty
+asdfgh
+zxcvbn
+12345v
+vboxuser@MyUbuntu:~/files$ cp file1 file2
+vboxuser@MyUbuntu:~/files$ ln -s file1 file3
+vboxuser@MyUbuntu:~/files$ ln file1 file4
+vboxuser@MyUbuntu:~/files$ ll
+итого 20
+drwxrwxr-x  2 vboxuser vboxuser 4096 ноя 22 21:17 ./
+drwxr-x--- 16 vboxuser vboxuser 4096 ноя 22 21:11 ../
+-rw-rw-r--  2 vboxuser vboxuser   27 ноя 22 21:15 file1
+-rw-rw-r--  1 vboxuser vboxuser   27 ноя 22 21:15 file2
+lrwxrwxrwx  1 vboxuser vboxuser    5 ноя 22 21:16 file3 -> file1
+-rw-rw-r--  2 vboxuser vboxuser   27 ноя 22 21:15 file4			// inode = 2
+vboxuser@MyUbuntu:~/files$ rm file1 -rf
+vboxuser@MyUbuntu:~/files$ cat file2					// file2 остался, так как он никаким образом не зависит от file1
+qwerty
+asdfgh
+zxcvbn
+12345
+vboxuser@MyUbuntu:~/files$ cat file3					// file3 ничего не отображает, так как в него
+cat: file3: Нет такого файла или каталога				// записана ссылка на несуществующий файл
+vboxuser@MyUbuntu:~/files$ cat file4					// удалили файл с жесткой ссылкой, а это просто значит что inode--
+qwerty
+asdfgh
+zxcvbn
+12345
+

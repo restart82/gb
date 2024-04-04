@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-28 09:19:45 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMjc7IjA1OjUzOjU1ICI7NjU0MA=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMjg7IjA5OjE5OjQ1ICI7MTQ7NjcwNg=="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="sum, i, n" type="Integer" array="False" size=""/>
+            <declare name="mid" type="Real" array="False" size=""/>
+            <assign variable="n" expression="4"/>
+            <declare name="arr" type="Integer" array="True" size="n"/>
+            <assign variable="sum" expression="0"/>
+            <for variable="i" start="0" end="n - 1" direction="inc" step="1">
+                <assign variable="arr[i]" expression="random(100)"/>
+                <assign variable="sum" expression="sum + arr[i]"/>
+            </for>
+            <assign variable="mid" expression="sum/n"/>
+            <output expression="mid" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

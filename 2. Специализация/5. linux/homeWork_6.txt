@@ -1,0 +1,206 @@
+1. Установить Nginx
+
+vboxuser@MyUbuntu:~$ systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-12-05 19:14:39 MSK; 1h 35min ago
+       Docs: man:nginx(8)
+   Main PID: 6492 (nginx)
+      Tasks: 3 (limit: 4599)
+     Memory: 3.5M
+        CPU: 123ms
+     CGroup: /system.slice/nginx.service
+             ├─ 6492 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             ├─14949 "nginx: worker process" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "">
+             └─14950 "nginx: worker process" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "" "">
+
+2. * настроить Nginx на работу с PHP-FPM.
+
+vboxuser@MyUbuntu:~$ whatis php-fpm
+php-fpm8.1 (8)       - PHP FastCGI Process Manager 'PHP-FPM'
+
+vboxuser@MyUbuntu:~$ nano /etc/php/8.1/fpm/pool.d/www.conf
+# listen = /run/php/php8.1-fpm.sock - копируем путь
+
+vboxuser@MyUbuntu:~$ sudo nano /etc/nginx/sites-enabled/default
+ 	location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+        #
+        #       # With php-fpm (or other unix sockets):
+        #       fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        #       # With php-cgi (or other tcp sockets):
+                fastcgi_pass unix:/run/php/php8.1-fpm.sock; - вставляем путь
+        }
+
+3. Установить Apache.
+
+vboxuser@MyUbuntu:~$ systemctl status apache2
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/lib/systemd/system/apache2.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-12-05 19:43:39 MSK; 1h 16min ago
+       Docs: https://httpd.apache.org/docs/2.4/
+   Main PID: 13188 (apache2)
+      Tasks: 6 (limit: 4599)
+     Memory: 11.1M
+        CPU: 587ms
+     CGroup: /system.slice/apache2.service
+             ├─13188 /usr/sbin/apache2 -k start
+             ├─13190 /usr/sbin/apache2 -k start
+             ├─13191 /usr/sbin/apache2 -k start
+             ├─13192 /usr/sbin/apache2 -k start
+             ├─13193 /usr/sbin/apache2 -k start
+             └─13194 /usr/sbin/apache2 -k start
+
+4. * Настроить обработку PHP. Добиться одновременной работы с Nginx.
+
+vboxuser@MyUbuntu:~$ sudo apt install libapache2-mod-php
+[sudo] пароль для vboxuser:
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово
+Уже установлен пакет libapache2-mod-php самой новой версии (2:8.1+92ubuntu1).
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail
+  libnginx-mod-stream libnginx-mod-stream-geoip2 nginx-common nginx-core
+Для их удаления используйте «sudo apt autoremove».
+Обновлено 0 пакетов, установлено 0 новых пакетов, для удаления отмечено 0 пакетов, и 3 пакетов не обновлено.
+
+# Выведем apache на 9000 порт
+vboxuser@MyUbuntu:~$ cd /etc/apache2/
+vboxuser@MyUbuntu:/etc/apache2$ sudo nano ports.conf
+Listen 9000
+
+<IfModule ssl_module>
+#       Listen 443
+</IfModule>
+
+<IfModule mod_gnutls.c>
+#       Listen 443
+</IfModule>
+
+vboxuser@MyUbuntu:/etc/apache2$ sudo nano sites-enabled/000-default.conf
+<VirtualHost *:9000>
+
+vboxuser@MyUbuntu:/etc/apache2$ sudo apachectl -t
+Syntax OK
+vboxuser@MyUbuntu:/etc/apache2$ sudo systemctl reload apache2
+vboxuser@MyUbuntu:/etc/apache2$ sudo ss -ntlp
+State          Recv-Q         Send-Q                 Local Address:Port                    Peer Address:Port
+Process
+LISTEN         0              151                        127.0.0.1:3306                         0.0.0.0:*
+ users:(("mysqld",pid=15708,fd=23))
+LISTEN         0              128                        127.0.0.1:631                          0.0.0.0:*
+ users:(("cupsd",pid=714,fd=7))
+LISTEN         0              511                          0.0.0.0:80                           0.0.0.0:*
+ users:(("nginx",pid=14950,fd=6),("nginx",pid=14949,fd=6),("nginx",pid=6492,fd=6))
+LISTEN         0              128                          0.0.0.0:22                           0.0.0.0:*
+ users:(("sshd",pid=695,fd=3))
+LISTEN         0              4096                   127.0.0.53%lo:53                           0.0.0.0:*
+ users:(("systemd-resolve",pid=405,fd=14))
+LISTEN         0              70                         127.0.0.1:33060                        0.0.0.0:*
+ users:(("mysqld",pid=15708,fd=21))
+LISTEN         0              511                             [::]:80                              [::]:*
+ users:(("nginx",pid=14950,fd=7),("nginx",pid=14949,fd=7),("nginx",pid=6492,fd=7))
+LISTEN         0              128                             [::]:22                              [::]:*
+ users:(("sshd",pid=695,fd=4))
+LISTEN         0              511                                *:9000                               *:*
+ users:(("apache2",pid=16201,fd=4),("apache2",pid=16200,fd=4),("apache2",pid=16199,fd=4),("apache2",pid=16198,fd=4),("apache2",pid=16197,fd=4),("apache2",pid=13188,fd=4))
+LISTEN         0              128                            [::1]:631                             [::]:*
+ users:(("cupsd",pid=714,fd=6))
+
+5. Настроить схему обратного прокси для Nginx (динамика - на Apache).
+
+vboxuser@MyUbuntu:/etc/apache2$ sudo nano /etc/nginx/sites-enabled/default
+
+	location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                # try_files $uri $uri/ =404;
+
+                proxy_pass http://localhost:9000;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+
+6. Установить MySQL. Создать новую базу данных и таблицу в ней.
+
+vboxuser@MyUbuntu:~$ systemctl status mysql
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)
+     Active: active (running) since Tue 2023-12-05 20:22:02 MSK; 59min ago
+    Process: 15700 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 15708 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 4599)
+     Memory: 378.9M
+        CPU: 45.638s
+     CGroup: /system.slice/mysql.service
+             └─15708 /usr/sbin/mysqld
+vboxuser@MyUbuntu:~$ sudo mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.35-0ubuntu0.22.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE DATABASE new_db
+    -> ;
+Query OK, 1 row affected (0,04 sec)
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| gb                 |
+| information_schema |
+| mysql              |
+| new_db             |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0,01 sec)
+
+mysql> USE new_db;
+Database changed
+mysql> CREATE TABLE table1;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> CREATE TABLE table1 (id INT, value VARCHAR(100));
+Query OK, 0 rows affected (0,14 sec)
+
+mysql> show tables
+    -> ;
++------------------+
+| Tables_in_new_db |
++------------------+
+| table1           |
++------------------+
+1 row in set (0,00 sec)
+
+mysql> INSERT INTO table1 VALUES (1, 'val1'), (2, 'val2'), (3, 'val3'), (4, 'val4');
+Query OK, 4 rows affected (0,03 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM table1;
++------+-------+
+| id   | value |
++------+-------+
+|    1 | val1  |
+|    2 | val2  |
+|    3 | val3  |
+|    4 | val4  |
++------+-------+
+4 rows in set (0,00 sec)
+
+mysql> exit
+Bye
+
+

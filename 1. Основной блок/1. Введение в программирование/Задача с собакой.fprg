@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-25 03:00:28 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMjU7IjAxOjUzOjM1ICI7NjUzMg=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMjU7IjAzOjAwOjI4ICI7Mzs2NjM4"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="V1 - &#1089;&#1082;&#1086;&#1088;&#1086;&#1089;&#1090;&#1100; &#1087;&#1077;&#1088;&#1074;&#1086;&#1075;&#1086; &#1095;&#1077;&#1083;&#1086;&#1074;&#1077;&#1082;&#1072;&#13;&#10;V2 - &#1089;&#1082;&#1086;&#1088;&#1086;&#1089;&#1090;&#1100; &#1074;&#1090;&#1086;&#1088;&#1086;&#1075;&#1086; &#1095;&#1077;&#1083;&#1086;&#1074;&#1077;&#1082;&#1072;&#13;&#10;Vd - &#1089;&#1082;&#1086;&#1088;&#1086;&#1089;&#1090;&#1100; &#1089;&#1086;&#1073;&#1072;&#1082;&#1080; &#1082;&#1091;&#1089;&#1072;&#1082;&#1080;&#13;&#10;S - &#1088;&#1072;&#1089;&#1089;&#1090;&#1086;&#1103;&#1085;&#1080;&#1077;&#13;&#10;n - &#1089;&#1095;&#1077;&#1090;&#1095;&#1080;&#1082;"/>
+            <declare name="V1, V2, Vd, S, t" type="Real" array="False" size=""/>
+            <declare name="n" type="Integer" array="False" size=""/>
+            <input variable="V1"/>
+            <input variable="V2"/>
+            <input variable="Vd"/>
+            <input variable="S"/>
+            <assign variable="n" expression="0"/>
+            <while expression="S &gt; 1">
+                <assign variable="n" expression="n + 1"/>
+                <if expression="n mod 2 = 0">
+                    <then>
+                        <assign variable="t" expression="S/(Vd + V1)"/>
+                    </then>
+                    <else>
+                        <assign variable="t" expression="S/(Vd + V2)"/>
+                    </else>
+                </if>
+                <assign variable="S" expression="S - t*(V1 + V2)"/>
+            </while>
+            <output expression="n" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

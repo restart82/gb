@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="&#1055;&#1077;&#1090;&#1088;"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-03-30 09:58:55 "/>
+        <attribute name="created" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMzA7IjA4OjU3OjI4ICI7NjU0MQ=="/>
+        <attribute name="edited" value="0J/QtdGC0YA7TEFQVE9QLUpBMTJQUkY2OzIwMjMtMDMtMzA7IjA5OjU4OjU1ICI7Mzs2NjUz"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="i, j, n, a" type="Integer" array="False" size=""/>
+            <assign variable="n" expression="10"/>
+            <declare name="array" type="Integer" array="True" size="n"/>
+            <for variable="i" start="0" end="n - 1" direction="inc" step="1">
+                <assign variable="array[i]" expression="random(100)"/>
+                <output expression="array[i]" newline="True"/>
+            </for>
+            <for variable="i" start="0" end="n - 1" direction="inc" step="1">
+                <for variable="j" start="0" end="n - 2" direction="inc" step="1">
+                    <if expression="array[j] &gt; array[j + 1]">
+                        <then>
+                            <assign variable="a" expression="array[j + 1]"/>
+                            <assign variable="array[j + 1]" expression="array[j]"/>
+                            <assign variable="array[j]" expression="a"/>
+                        </then>
+                        <else/>
+                    </if>
+                </for>
+            </for>
+        </body>
+    </function>
+</flowgorithm>

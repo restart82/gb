@@ -1,0 +1,25 @@
+PS C:\Users\Петр> ssh vboxuser@192.168.1.82
+vboxuser@192.168.1.82's password:
+Welcome to Ubuntu 22.04.3 LTS (GNU/Linux 6.2.0-36-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+Expanded Security Maintenance for Applications is not enabled.
+
+26 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+*** System restart required ***
+Last login: Fri Nov 17 20:25:29 2023 from 192.168.1.75
+vboxuser@MyUbuntu:~$ hostname -I
+192.168.1.82
+vboxuser@MyUbuntu:~$ whoami
+vboxuser
+vboxuser@MyUbuntu:~$ uname -a
+Linux MyUbuntu 6.2.0-36-generic #37~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  9 15:34:04 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+vboxuser@MyUbuntu:~$
