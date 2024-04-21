@@ -1,0 +1,12 @@
+
+hw/x64/Debug/
+
+.vs/
+
+hw/hw.sln
+
+hw/hw.vcxproj
+
+hw/hw.vcxproj.filters
+
+hw/hw.vcxproj.user
