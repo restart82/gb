@@ -446,3 +446,8 @@ About
 test
 .vscode
 
+
+*.exe
+
+.idea
+
